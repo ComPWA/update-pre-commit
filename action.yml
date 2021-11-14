@@ -1,0 +1,22 @@
+name: Auto-update pre-commit config
+description: Run pre-commit autoupdate and upload config file as artifact
+
+inputs:
+  python-version:
+    description: Python version to run pre-commit with
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Python ${{ inputs.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ inputs.python-version }}
+    - run: pip install pre-commit
+      shell: bash
+    - run: pre-commit autoupdate
+      shell: bash
+    - uses: actions/upload-artifact@v2
+      with:
+        path: .pre-commit-config.yaml
