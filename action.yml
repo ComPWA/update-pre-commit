@@ -4,6 +4,7 @@ description: Run pre-commit autoupdate and upload config file as artifact
 inputs:
   python-version:
     description: Python version to run pre-commit with
+    default: "3.8"
     required: true
 
 runs:
