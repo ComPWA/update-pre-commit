@@ -8,7 +8,7 @@ A small [custom, composite GitHub Action](https://docs.github.com/en/actions/cre
 jobs:
   pre-commit:
     name: pre-commit autoupdate
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
         with:
@@ -22,18 +22,20 @@ jobs:
 
   push:
     name: Push changes
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs:
       - pre-commit
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           token: ${{ secrets.PAT }}
         # GITHUB_TOKEN will not rerun checks after pushing to a PR branch
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
+        with:
+          path: pre-commit
       - run: |
           [[ -f .pre-commit-config.yaml ]] && mv -f .pre-commit-config.yaml ..
-        working-directory: artifact
+        working-directory: pre-commit
       - name: Commit and push changes
         run: |
           git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}
