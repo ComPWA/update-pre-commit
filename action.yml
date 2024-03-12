@@ -19,11 +19,13 @@ runs:
         curl -LsSf https://astral.sh/uv/install.sh | sh
         source $HOME/.cargo/env
       shell: bash
-    - run: uv pip install --color=always --system pre-commit
+    - name: Install pre-commit
+      run: uv pip install --color=always --system pre-commit
       shell: bash
     - run: pre-commit autoupdate --color=always
       shell: bash
-    - run: git diff --color --unified=0
+    - name: Show changes
+      run: git diff --color --unified=0
       shell: bash
     - uses: actions/upload-artifact@v4
       with:
