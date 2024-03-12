@@ -23,6 +23,8 @@ runs:
       shell: bash
     - run: pre-commit autoupdate --color=always
       shell: bash
+    - run: git diff --color --unified=0
+      shell: bash
     - uses: actions/upload-artifact@v4
       with:
         name: pre-commit
