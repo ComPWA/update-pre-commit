@@ -1,4 +1,4 @@
-name-template: update-pip-constraints $NEXT_PATCH_VERSION
+name-template: ComPWA/update-pre-commit v$NEXT_PATCH_VERSION
 tag-template: $NEXT_PATCH_VERSION
 
 references:
