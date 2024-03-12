@@ -14,7 +14,12 @@ runs:
       uses: actions/setup-python@v5
       with:
         python-version: ${{ inputs.python-version }}
-    - run: pip install pre-commit
+    - name: Install uv
+      run: |
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+        source $HOME/.cargo/env
+      shell: bash
+    - run: uv pip install --color=always --system pre-commit
       shell: bash
     - run: pre-commit autoupdate --color=always
       shell: bash
