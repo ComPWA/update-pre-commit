@@ -16,7 +16,7 @@ runs:
         python-version: ${{ inputs.python-version }}
     - run: pip install pre-commit
       shell: bash
-    - run: pre-commit autoupdate
+    - run: pre-commit autoupdate --color=always
       shell: bash
     - uses: actions/upload-artifact@v4
       with:
