@@ -4,30 +4,27 @@ description: Run pre-commit autoupdate and upload config file as artifact
 inputs:
   python-version:
     description: Python version to run pre-commit with
-    default: "3.9"
+    default: "3.12"
     required: true
 
 runs:
   using: composite
   steps:
-    - name: Set up Python ${{ inputs.python-version }}
-      uses: actions/setup-python@v5
+    - uses: actions/setup-python@v5
       with:
         python-version: ${{ inputs.python-version }}
-    - name: Install uv
-      run: |
-        curl -LsSf https://astral.sh/uv/install.sh | sh
-        source $HOME/.cargo/env
-      shell: bash
-    - name: Install pre-commit
-      run: uv pip install --color=always --system pre-commit
-      shell: bash
-    - run: pre-commit autoupdate --color=always
+    - uses: astral-sh/setup-uv@v3
+    - env:
+        FORCE_COLOR: True
+        UV_SYSTEM_PYTHON: True
+      run: uvx --with pre-commit-uv pre-commit autoupdate
       shell: bash
     - name: Show changes
       run: git diff --color --unified=0
       shell: bash
     - uses: actions/upload-artifact@v4
       with:
+        if-no-files-found: error
+        include-hidden-files: true
         name: pre-commit
         path: .pre-commit-config.yaml
