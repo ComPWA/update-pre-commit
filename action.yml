@@ -13,7 +13,7 @@ runs:
     - uses: actions/setup-python@v5
       with:
         python-version: ${{ inputs.python-version }}
-    - uses: astral-sh/setup-uv@v3
+    - uses: astral-sh/setup-uv@v5
     - env:
         FORCE_COLOR: True
         UV_SYSTEM_PYTHON: True
