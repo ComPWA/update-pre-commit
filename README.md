@@ -8,7 +8,7 @@ A small [custom, composite GitHub Action](https://docs.github.com/en/actions/cre
 jobs:
   pre-commit:
     name: pre-commit autoupdate
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v2
         with:
@@ -22,7 +22,7 @@ jobs:
 
   push:
     name: Push changes
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs:
       - pre-commit
     steps:
