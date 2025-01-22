@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: "/"
+    assignees:
+      - redeboer
+      - shenvitor
+    commit-message:
+      prefix: MAINT
+    groups:
+      actions:
+        patterns:
+          - "*"
+    labels:
+      - 🔨 Maintenance
+    schedule:
+      interval: monthly
