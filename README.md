@@ -10,7 +10,7 @@ jobs:
     name: pre-commit autoupdate
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Check if there are changes to pre-commit config
