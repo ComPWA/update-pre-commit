@@ -18,7 +18,7 @@ jobs:
         continue-on-error: true
       - name: Update hooks in pre-commit config
         if: success()
-        uses: ComPWA/update-pre-commit@main
+        uses: ComPWA/update-pre-commit@v1
 
   push:
     name: Push changes
@@ -30,7 +30,7 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
         # GITHUB_TOKEN will not rerun checks after pushing to a PR branch
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           path: pre-commit
       - run: |
