@@ -1,6 +1,9 @@
 # Auto-update pre-commit GitHub Action
 
-A small [custom, composite GitHub Action](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action) that is used by [ComPWA](https://github.com/ComPWA) repositories that pin constraints files (see [update-pip-constraints](https://github.com/ComPWA/update-pip-constraints)). The action is enforced in these repositories through [ComPWA/repo-maintenance](https://github.com/ComPWA/repo-maintenance).
+> [!WARNING]
+> This repository has been deprecated in favor of the [ComPWA/actions/.github/workflows/lock.yml@v4](https://github.com/ComPWA/actions/blob/v4/.github/workflows/lock.yml#L213-L236) workflow.
+
+A small [custom, composite GitHub Action](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action) that is used by [ComPWA](https://github.com/ComPWA) repositories that pin constraints files (see [update-pip-constraints](https://github.com/ComPWA/update-pip-constraints)). The action is enforced in these repositories through [ComPWA/policy](https://github.com/ComPWA/policy).
 
 ## Example workflow
 
