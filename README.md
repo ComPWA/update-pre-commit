@@ -1,6 +1,9 @@
 # Auto-update pre-commit GitHub Action
 
-A small [custom, composite GitHub Action](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action) that is used by [ComPWA](https://github.com/ComPWA) repositories that pin constraints files (see [update-pip-constraints](https://github.com/ComPWA/update-pip-constraints)). The action is enforced in these repositories through [ComPWA/repo-maintenance](https://github.com/ComPWA/repo-maintenance).
+> [!WARNING]
+> This repository has been deprecated in favor of the [ComPWA/actions/.github/workflows/lock.yml@v4](https://github.com/ComPWA/actions/blob/v4/.github/workflows/lock.yml#L213-L236) workflow.
+
+A small [custom, composite GitHub Action](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action) that is used by [ComPWA](https://github.com/ComPWA) repositories that pin constraints files (see [update-pip-constraints](https://github.com/ComPWA/update-pip-constraints)). The action is enforced in these repositories through [ComPWA/policy](https://github.com/ComPWA/policy).
 
 ## Example workflow
 
@@ -10,7 +13,7 @@ jobs:
     name: pre-commit autoupdate
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Check if there are changes to pre-commit config
@@ -26,11 +29,11 @@ jobs:
     needs:
       - pre-commit
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           token: ${{ secrets.PAT }}
         # GITHUB_TOKEN will not rerun checks after pushing to a PR branch
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v7
         with:
           path: pre-commit
       - run: |
