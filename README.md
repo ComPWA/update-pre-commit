@@ -10,7 +10,7 @@ jobs:
     name: pre-commit autoupdate
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Check if there are changes to pre-commit config
@@ -26,11 +26,11 @@ jobs:
     needs:
       - pre-commit
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           token: ${{ secrets.PAT }}
         # GITHUB_TOKEN will not rerun checks after pushing to a PR branch
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v7
         with:
           path: pre-commit
       - run: |
